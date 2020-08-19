@@ -1,0 +1,33 @@
+.feature-box {
+    background-color: rgba($color-white, 0.8);
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    border-radius: $default-border-radius;
+    text-align: center;
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+
+    &__icon {
+        display: inline-block;
+        // First set the total background image to the color you want it
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark); 
+        // Then clip the area that you want this color to display in, in this case -text-
+        -webkit-background-clip: text;
+        // And last but not least set your text color to transparent so you can see the nice gradient
+        color: transparent;
+        font-size: 6rem;
+        margin-bottom: .5rem;
+
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
+    }
+} 

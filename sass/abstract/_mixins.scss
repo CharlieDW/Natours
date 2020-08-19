@@ -1,0 +1,55 @@
+@mixin clearfix {
+    &::after {
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}
+
+@mixin centerHorizontalVertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER 
+/* 
+0 - 600px:      PHONE 
+600 - 900px:    PORTRAIT MODE TABLET 
+900 - 1200px:   LANDSCAPE MODE TABLET
+
+[1200 - 1800px] is where our normal styles apply 
+
+1800 + :        BIG COMPUTER SCREENS
+
+$BREAKPOINT ARGUMENT CHOICES
+
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+Keep in mind that the ems and rems in mediaqueries are not influenced by the root font-size definition. 
+They will use the default browser one of 16px. 
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+      @media only screen and (max-width: 37.5em) { @content }; // 600px
+    }
+
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { @content }; // 900px
+    }
+
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) { @content };  // 1200px
+    }
+
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 112.5em) { @content };  // 1800px
+    }
+}
